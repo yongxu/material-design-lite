@@ -167,6 +167,40 @@ gulp.task('styles', ['styletemplates'], function () {
     .pipe($.size({title: 'styles'}));
 });
 
+gulp.task('componentsize', function () {
+  // For best performance, don't add Sass partials to `gulp.src`
+  var s1 = gulp.src([
+    'src/*/_*.scss'
+  ])
+    .pipe($.rename(function(path) {
+      path.basename = path.basename.slice(1);
+    }));
+  var s2 = gulp.src([
+    'src/*/_*.scss'
+  ]);
+  
+  return merge(s1, s2)
+    // Generate Source Maps
+    .pipe($.sass({
+      precision: 10,
+      onError: console.error.bind(console, 'Sass error:')
+    }))
+    .pipe($.cssInlineImages({
+      webRoot: 'src'
+    }))
+    .pipe($.autoprefixer(AUTOPREFIXER_BROWSERS))
+    .pipe($.csso())
+    .pipe($.size({ 
+      showFiles: true
+    }))
+    .pipe($.size({
+      showFiles: true, 
+      gzip: true
+    }));
+});
+
+
+
 // Concatenate And Minify JavaScript
 gulp.task('scripts', function () {
   var sources = [
