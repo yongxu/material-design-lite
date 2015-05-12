@@ -266,3 +266,11 @@
   transition-duration: $duration;
   transition-timing-function: $animation-curve-default;
 }
+
+/* Icons */
+
+@mixin mdl-icon {
+  font-family: 'Material-Design-Iconic-Font';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
