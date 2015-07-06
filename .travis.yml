@@ -10,13 +10,13 @@ env:
     - CLOUDSDK_PYTHON_SITEPACKAGES=1
     - secure: "nXTWx2RAoWK7PBPY65JV23U9t2EI5UF6Z2Te2UgmbH0r4lGEDL8m0018/nd/7Ubvcc3x+gEGiBIwy9YeF3lGagBRWlE7TpnS31G9OgR68WqvIzq53jf8siunlpYrx2jmUcWar3QJGncKX0WrK0E4YrP+h47Eg+ZYKAqjS1+eQziyEOhb+s5e9siqIBTjbvCPBqWXkAIQNUQDWc0ESQjuLjI5y/uVZ97ZNzQ3ZG5FN4Do/Ft1hxeGneRFML7xkunsU9p29cY8owZI6lm1wGCmGtoqG1Y2pfUHBPulOY5LEDnf5Kq7eQ/7ZoItVRokYe0LxL5N9yC6HJBJjpy772z1of8/IO1pSjszFcPEa0eQF+H8nkJ1vCaKenMu4rldW9AiBe1HkGsL84+ShkZqfZpUHkeNf8StJs5O6bcjYMi8d7Z5Gvdhe+fipqp0it3GYGkh55XpH2mVPM41n9eIX+DSGEKpvCnKn1v/Udt+7pbPgg6I6QLXKQ+Wi6hJJaJvYx9qu/lmbgLwt+Eo261/hqTQ+6/Q5HV1OrJfGSsYaP4DKmiS9DkYTeTOYGyYSHGRFdbFjsj/HO2nHvGfh4/o4NoAa6NArB3Zvu2tmrOKNw9VjMPp7Dq06o9U7Ww0arFYH5zky4cdx3kcGva3jOGysmNmdiOc7F4Ib3LafpynjavY9S8="
 install:
+  - if [ ! -d google-cloud-sdk ]; then curl https://dl.google.com/dl/cloudsdk/release/google-cloud-sdk.tar.gz && tar xvzf google-cloud-sdk.tar.gz && google-cloud-sdk/install.sh; fi
+  - google-cloud-sdk/bin/gcloud update gsutil
   - npm install -g gulp
   - npm install
   - node_modules/napa/bin/napa mojombo/clippy
 script:
   - gulp
 after_success:
-  - if [ ! -d google-cloud-sdk ]; then curl https://dl.google.com/dl/cloudsdk/release/google-cloud-sdk.tar.gz && tar xzf google-cloud-sdk.tar.gz && google-cloud-sdk/install.sh; fi
-  - google-cloud-sdk/bin/gcloud update gsutil
   - openssl aes-256-cbc -d -in .drone.p12.enc -out .drone.p12 -pass env:SRV_ACCT_PASS
   - google-cloud-sdk/bin/gcloud auth activate-service-account 996714972814-7q585hf42vmouqkfdbccsnrc6jgclfm1@developer.gserviceaccount.com --key-file .drone.p12
