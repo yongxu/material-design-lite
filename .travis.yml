@@ -1,0 +1,11 @@
+sudo: false
+language: node
+cache:
+  directories:
+    - node_modules
+install:
+  - npm install -g gulp
+  - npm install
+  - node_modules/napa/bin/napa mojombo/clippy
+script:
+  - gulp
