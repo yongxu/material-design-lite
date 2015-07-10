@@ -1,4 +1,4 @@
-# Material Design Lite
+# Material Design Lite [![Build Status][travis-image]][travis-url] [![Dependency Status][depstat-image]][depstat-url]
 
 > An implementation of [Material Design](http://www.google.com/design/spec/material-design/introduction.html)
 components in vanilla CSS, JS, and HTML
@@ -137,3 +137,9 @@ forth, we recommend trying out the excellent [Polymer](http://polymer-project.or
 ## License
 
 © Google, 2015. Licensed under an [Apache-2](https://github.com/google/material-design-lite/blob/master/LICENSE) license.
+
+[travis-url]: https://travis-ci.org/google/material-design-lite
+[travis-image]: https://travis-ci.org/google/material-design-lite.svg?branch=master
+
+[depstat-url]: https://david-dm.org/google/material-design-lite
+[depstat-image]: https://david-dm.org/google/material-design-lite.svg
