@@ -16,49 +16,49 @@
  */
 
  function MaterialDialog(element) {
-   'use strict';
-   this.element_ = element;
-   this.returnValue = '';
-   this.init();
- }
+  'use strict';
+  this.element_ = element;
+  this.returnValue = '';
+  this.init();
+}
 
 MaterialDialog.prototype.showInternal_ = function(backdrop) {
-	'use strict';
-	if(backdrop === undefined) {
-		throw Error('You must provide whether or not to show the backdrop.');
-	}
-	if(this.element_.getAttribute('open') === 'true') {
-		return;
-	}
-	if(backdrop) {
-		this.createBackdrop_();
-	}
-	this.element_.setAttribute('open', true);
+  'use strict';
+  if (backdrop === undefined) {
+    throw Error('You must provide whether or not to show the backdrop.');
+  }
+  if (this.element_.getAttribute('open') === 'true') {
+    return;
+  }
+  if (backdrop) {
+    this.createBackdrop_();
+  }
+  this.element_.setAttribute('open', true);
 };
 
 MaterialDialog.prototype.createBackdrop_ = function() {
-	'use strict';
-	this.backdropElement_ = document.createElement('div');
-	this.backdropElement_.classList.add('mdl-dialog-backdrop');
-	document.body.appendChild(this.backdropElement_);
+  'use strict';
+  this.backdropElement_ = document.createElement('div');
+  this.backdropElement_.classList.add('mdl-dialog-backdrop');
+  document.body.appendChild(this.backdropElement_);
 };
 
 MaterialDialog.prototype.show = function() {
-	'use strict';
-	this.showInternal_(false);
+  'use strict';
+  this.showInternal_(false);
 };
 
 MaterialDialog.prototype.showModal = function() {
-	'use strict';
-	this.showInternal_(true);
+  'use strict';
+  this.showInternal_(true);
 };
 
 MaterialDialog.prototype.close = function(returnValue) {
-	'use strict';
-	this.element_.removeAttribute('open');
-	if(this.backdropElement_) {
-		document.body.removeChild(this.backdropElement_);
-	}
+  'use strict';
+  this.element_.removeAttribute('open');
+  if (this.backdropElement_) {
+    document.body.removeChild(this.backdropElement_);
+  }
 };
 
 componentHandler.register({
