@@ -40,7 +40,7 @@ MaterialDialog.prototype.createBackdrop_ = function() {
 	'use strict';
 	this.backdropElement_ = document.createElement('div');
 	this.backdropElement_.classList.add('mdl-dialog-backdrop');
-	this.element_.appendChild(this.backdropElement_);
+	document.body.appendChild(this.backdropElement_);
 };
 
 MaterialDialog.prototype.show = function() {
@@ -57,7 +57,7 @@ MaterialDialog.prototype.close = function(returnValue) {
 	'use strict';
 	this.element_.removeAttribute('open');
 	if(this.backdropElement_) {
-		this.element_.removeChild(this.backdropElement_);
+		document.body.removeChild(this.backdropElement_);
 	}
 };
 

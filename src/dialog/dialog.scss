@@ -19,12 +19,12 @@
 $dialog-backdrop-color: rgba(0, 0, 0, .55);
 .mdl-dialog {
     border:none;
-    display: flex;
-    width: fit-content;
-    height: fit-content;
+    display: block;
+    width: 500px;
     margin: auto;
     background:white;
-
+    position: relative;
+    
     &:not([data-open="true"]) {
         display:none;
     }
