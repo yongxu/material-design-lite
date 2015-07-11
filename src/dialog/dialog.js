@@ -18,14 +18,48 @@
  function MaterialDialog(element) {
    'use strict';
    this.element_ = element;
-   this.open = false;
    this.returnValue = '';
    this.init();
  }
 
-MaterialDialog.prototype.show = function() {};
-MaterialDialog.prototype.showModal = function() {};
-MaterialDialog.prototype.close = function(returnValue) {};
+MaterialDialog.prototype.showInternal_ = function(backdrop) {
+	'use strict';
+	if(backdrop === undefined) {
+		throw Error('You must provide whether or not to show the backdrop.');
+	}
+	if(this.element_.getAttribute('open') === 'true') {
+		return;
+	}
+	if(backdrop) {
+		this.createBackdrop_();
+	}
+	this.element_.setAttribute('open', true);
+};
+
+MaterialDialog.prototype.createBackdrop_ = function() {
+	'use strict';
+	this.backdropElement_ = document.createElement('div');
+	this.backdropElement_.classList.add('mdl-dialog-backdrop');
+	this.element_.appendChild(this.backdropElement_);
+};
+
+MaterialDialog.prototype.show = function() {
+	'use strict';
+	this.showInternal_(false);
+};
+
+MaterialDialog.prototype.showModal = function() {
+	'use strict';
+	this.showInternal_(true);
+};
+
+MaterialDialog.prototype.close = function(returnValue) {
+	'use strict';
+	this.element_.removeAttribute('open');
+	if(this.backdropElement_) {
+		this.element_.removeChild(this.backdropElement_);
+	}
+};
 
 componentHandler.register({
   constructor: MaterialDialog,
