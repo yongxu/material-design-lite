@@ -19,13 +19,14 @@
 $dialog-backdrop-color: rgba(0, 0, 0, .55);
 
 .mdl-dialog {
-    border: 1px solid;
     display: block;
     min-width: 280px;
     max-width: 500px;
     margin: auto;
     background: white;
-    position: relative;
+    position: fixed;
+    left: 0;
+    right: 0;
     z-index: 11;
 
     &:not([open]) {
@@ -54,6 +55,13 @@ $dialog-backdrop-color: rgba(0, 0, 0, .55);
     }
     &__actions {
         padding: 8px 8px 8px 24px;
+        float: right;
+        * {
+            margin-right: 8px;
+            &:last-child {
+                margin-right: 0;
+            }
+        }
     }
     &__content {
         color: grey;

@@ -19,7 +19,6 @@
   'use strict';
   this.element_ = element;
   this.returnValue = '';
-  this.init();
 }
 
 MaterialDialog.prototype.showInternal_ = function(backdrop) {
@@ -58,6 +57,7 @@ MaterialDialog.prototype.close = function(returnValue) {
   this.element_.removeAttribute('open');
   if (this.backdropElement_) {
     document.body.removeChild(this.backdropElement_);
+    this.backdropElement_ = undefined;
   }
 };
 
