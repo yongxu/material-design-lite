@@ -17,15 +17,18 @@
 @import "../variables";
 
 $dialog-backdrop-color: rgba(0, 0, 0, .55);
+
 .mdl-dialog {
-    border:none;
+    border: 1px solid;
     display: block;
-    width: 500px;
+    min-width: 280px;
+    max-width: 500px;
     margin: auto;
-    background:white;
+    background: white;
     position: relative;
-    
-    &:not([data-open="true"]) {
+    z-index: 11;
+
+    &:not([open]) {
         display:none;
     }
 
@@ -35,10 +38,28 @@ $dialog-backdrop-color: rgba(0, 0, 0, .55);
 
     &-backdrop {
         background-color: $dialog-backdrop-color;
-        position:fixed;
+        position:absolute;
         top: 0;
         right: 0;
         bottom: 0;
         left: 0;
+        z-index: 10;
+    }
+
+    &__title {
+        color: black;
+        padding-left: 24px;
+        padding-right: 24px;
+        padding-top: 24px;
+    }
+    &__actions {
+        padding: 8px 8px 8px 24px;
+    }
+    &__content {
+        color: grey;
+        padding-top: 20px;
+        padding-left: 24px;
+        padding-right: 24px;
+        padding-bottom: 24px;
     }
 }
