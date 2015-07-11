@@ -26,3 +26,10 @@
 MaterialDialog.prototype.show = function() {};
 MaterialDialog.prototype.showModal = function() {};
 MaterialDialog.prototype.close = function(returnValue) {};
+
+componentHandler.register({
+  constructor: MaterialDialog,
+  classAsString: 'MaterialDialog',
+  cssClass: 'mdl-js-dialog',
+  widget: true
+});
