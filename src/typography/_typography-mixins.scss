@@ -1,0 +1,236 @@
+/**
+ * Copyright 2015 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+$typo-display-4: 112px;
+$typo-display-3: 56px;
+$typo-display-2: 45px;
+$typo-display-1: 34px;
+$typo-headline: 24px;
+$typo-title: 20px;
+$typo-subhead: 16px;
+$typo-subhead-2: $typo-subhead;
+$typo-caption: 12px;
+$typo-blockquote: 24px;
+
+ // What would you like your base font-size to be? Define in pixels; the library
+ // will convert measurements to the most appropriate units (rems or unitless).
+ $typecsset-base-font-size:      14px !default;
+ $typecsset-base-line-height:    24px !default;
+
+ // Heading sizes
+ $typecsset-h1-size:             $typo-display-3 !default;
+ $typecsset-h2-size:             36px !default;
+ $typecsset-h3-size:             30px !default;
+ $typecsset-h4-size:             24px !default;
+ $typecsset-h5-size:             20px !default;
+ $typecsset-h6-size:             18px !default;
+
+ //$typecsset-show-baseline:       true !default;
+ //@import "../third_party/typecsset/typecsset";
+ @import "../third_party/typecsset/mixins";
+
+ /* Typography */
+
+ @mixin typo-preferred-font($usePreferred: true) {
+   @if $usePreferred {
+     font-family: $preferred_font;
+   }
+ }
+
+ @mixin typo-display-4($colorContrast: false, $usePreferred: true) {
+   @include typo-preferred-font($usePreferred);
+   @include typecsset-font-size($typo-display-4);
+
+   font-weight: 300;
+   letter-spacing: -0.04em;
+
+   @if $colorContrast {
+     opacity: 0.54;
+   }
+ }
+
+ @mixin typo-display-3($colorContrast: false, $usePreferred: true) {
+   @include typo-preferred-font($usePreferred);
+   @include typecsset-font-size($typo-display-3);
+
+   font-weight: 400;
+   letter-spacing: -0.02em;
+
+   @if $colorContrast {
+     opacity: 0.54;
+   }
+ }
+
+ @mixin typo-display-2($colorContrast: false, $usePreferred: true) {
+   @include typo-preferred-font($usePreferred);
+   @include typecsset-font-size($typo-display-2);
+
+   font-weight: 400;
+
+   @if $colorContrast {
+     opacity: 0.54;
+   }
+ }
+
+ @mixin typo-display-1($colorContrast: false, $usePreferred: true) {
+   @include typo-preferred-font($usePreferred);
+   @include typecsset-font-size($typo-display-1);
+
+   font-weight: 400;
+   line-height: 40px;
+
+   @if $colorContrast {
+     opacity: 0.54;
+   }
+ }
+
+ @mixin typo-headline($colorContrast: false, $usePreferred: true) {
+   @include typo-preferred-font($usePreferred);
+   @include typecsset-font-size($typo-headline);
+
+   font-weight: 400;
+   -moz-osx-font-smoothing: grayscale;
+
+   @if $colorContrast {
+     opacity: 0.87;
+   }
+ }
+
+ @mixin typo-title($colorContrast: false, $usePreferred: true) {
+   @include typo-preferred-font($usePreferred);
+   @include typecsset-font-size($typo-title);
+
+   font-weight: 500;
+   letter-spacing: 0.02em;
+
+   @if $colorContrast {
+     opacity: 0.87;
+   }
+ }
+
+ @mixin typo-subhead($colorContrast: false, $usePreferred: true) {
+   @include typo-preferred-font($usePreferred);
+   @include typecsset-font-size($typo-subhead);
+
+   font-weight: 400;
+   letter-spacing: 0.04em;
+
+   @if $colorContrast {
+     opacity: 0.87;
+   }
+ }
+
+ @mixin typo-subhead-2($colorContrast: false, $usePreferred: true) {
+   @include typo-preferred-font($usePreferred);
+   @include typecsset-font-size($typo-subhead-2);
+
+   font-weight: 400;
+   letter-spacing: 0.04em;
+
+   @if $colorContrast {
+     opacity: 0.87;
+   }
+ }
+
+ @mixin typo-body-2($colorContrast: false, $usePreferred: false) {
+   @include typo-preferred-font($usePreferred);
+   @include typecsset-font-size($typecsset-base-font-size);
+
+   @if $usePreferred {
+     font-weight: 500;
+   } @else {
+     font-weight: bold;
+   }
+   letter-spacing: 0;
+
+   @if $colorContrast {
+     opacity: 0.87;
+   }
+ }
+
+ @mixin typo-body-1($colorContrast: false, $usePreferred: false) {
+   @include typo-preferred-font($usePreferred);
+   @include typecsset-font-size($typecsset-base-font-size);
+
+   font-weight: 400;
+   letter-spacing: 0;
+
+   @if $colorContrast {
+     opacity: 0.87;
+   }
+ }
+
+ @mixin typo-caption($colorContrast: false, $usePreferred: false) {
+   @include typo-preferred-font($usePreferred);
+   @include typecsset-font-size($typo-caption);
+
+   font-weight: 400;
+   letter-spacing: 0;
+
+   @if $colorContrast {
+     opacity: 0.54;
+   }
+ }
+
+ @mixin typo-blockquote($colorContrast: false, $usePreferred: true) {
+   @include typo-preferred-font($usePreferred);
+   @include typecsset-font-size($typo-blockquote);
+
+   position: relative;
+   font-weight: 300;
+   font-style: italic;
+   letter-spacing: 0.08em;
+
+   &:before {
+     position: absolute;
+     left: -0.5em;
+     content: '“';
+   }
+
+   &:after {
+     content: '”';
+     margin-left: -0.05em;
+   }
+
+   @if $colorContrast {
+     opacity: 0.54;
+   }
+ }
+
+ @mixin typo-menu($colorContrast: false, $usePreferred: true) {
+   @include typo-preferred-font($usePreferred);
+   @include typecsset-font-size($typecsset-base-font-size);
+
+   font-weight: 500;
+   letter-spacing: 0;
+
+   @if $colorContrast {
+     opacity: 0.87;
+   }
+ }
+
+ @mixin typo-button($colorContrast: false, $usePreferred: true) {
+   @include typo-preferred-font($usePreferred);
+   @include typecsset-font-size($typecsset-base-font-size);
+
+   font-weight: 500;
+   text-transform: uppercase;
+   letter-spacing: 0;
+
+   @if $colorContrast {
+     opacity: 0.87;
+   }
+ }
