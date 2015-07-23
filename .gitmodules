@@ -1,0 +1,3 @@
+[submodule "src/third_party/typecsset"]
+	path = src/third_party/typecsset
+	url = git@github.com:csswizardry/typecsset.git
