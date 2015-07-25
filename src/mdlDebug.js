@@ -17,6 +17,75 @@
  
 
 var MDLDEBUG = {
+  colorClasses: function() {
+      var found = [];
+      var classes = [];
+      var colors = [
+        'red',
+        'pink',
+        'purple',
+        'deep-purple',
+        'indigo',
+        'blue',
+        'light-blue',
+        'cyan',
+        'teal',
+        'green',
+        'light-green',
+        'lime',
+        'yellow',
+        'amber',
+        'orange',
+        'deep-orange',
+        'brown',
+        'grey',
+        'blue-grey',
+
+      ];
+      var levels = [
+        '50',
+        '100',
+        '200',
+        '300',
+        '400',
+        '500',
+        '600',
+        '700',
+        '800',
+        '900',
+        'A100',
+        'A200',
+        'A400',
+        'A700'
+      ];
+      var nonPalette = [
+        'mdl-color--black',
+        'mdl-color-text--black',
+        'mdl-color-text--white',
+        'mdl-color--white'
+      ];
+      colors.forEach(function(color) {
+          var colorClass = 'mdl-color--' + color;
+          var textClass = 'mdl-color-text--' + color;
+          classes.push(colorClass);
+          classes.push(textClass);
+          levels.forEach(function(level) {
+              classes.push(colorClass + '-' + level);
+              classes.push(textClass + '-' + level);
+          });
+      });
+      nonPalette.forEach(function(selector) {
+          classes.push(selector);
+      });
+      classes.forEach(function(selector) {
+        Array.prototype.slice.call(document.querySelectorAll('.' + selector)).forEach(function(node) {
+            found.push(node);
+        });
+      });
+      if(found.length > 0) {
+          console.warn('Using deprecated color classes.');
+      }
+  },
   deprecatedFooterSelectors: function() {
     var nodes = [];
     var miniPrefix = 'mdl-mini-footer';
