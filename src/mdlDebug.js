@@ -38,7 +38,7 @@ var MDLDEBUG = {
       megaPrefix + '--link-list'
     ];
     selectors.forEach(function(item) {
-      Array.prototype.slice.call(document.querySelectorAll(selectors[item])).forEach(function(node) {
+      Array.prototype.slice.call(document.querySelectorAll('.' + item)).forEach(function(node) {
         nodes.push(node);
       });
     });
@@ -49,8 +49,9 @@ var MDLDEBUG = {
 };
 
 
-(function() {}(
+(function() {
+  'use strict';
   for (var property in MDLDEBUG) {
     MDLDEBUG[property]();
   }
-));
+}());
